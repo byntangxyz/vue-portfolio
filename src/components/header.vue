@@ -1,9 +1,10 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, getCurrentInstance } from 'vue';
+import { ref, onMounted, onBeforeUnmount, getCurrentInstance } from "vue";
 
-const isNavVisible = ref(false); // State untuk menampilkan menu
-const hamburger = ref(null); // Ref untuk tombol hamburger
-const navMenu = ref(null); // Ref untuk menu navigasi
+const isNavVisible = ref(false);
+const hamburger = ref(null);
+const navMenu = ref(null);
+const isDarkMode = ref(false);
 
 function handleClickOutside(event) {
   if (
@@ -12,28 +13,46 @@ function handleClickOutside(event) {
     !hamburger.value.contains(event.target) &&
     !navMenu.value.contains(event.target)
   ) {
-    isNavVisible.value = false; // Sembunyikan menu
+    isNavVisible.value = false;
   }
 }
 
-// Pasang dan lepas event listener saat komponen aktif
 onMounted(() => {
-  window.addEventListener('click', handleClickOutside);
+  window.addEventListener("click", handleClickOutside);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('click', handleClickOutside);
+  window.removeEventListener("click", handleClickOutside);
+});
+
+function toggleDarkMode() {
+  isDarkMode.value = !isDarkMode.value;
+  localStorage.setItem("darkMode", isDarkMode.value); // Simpan ke Local Storage
+
+  if (isDarkMode.value) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+}
+
+onMounted(() => {
+  const savedMode = localStorage.getItem("darkMode") === "true";
+  isDarkMode.value = savedMode;
+
+  if (isDarkMode.value) {
+    document.documentElement.classList.add("dark");
+  }
 });
 </script>
 
-
 <template>
-  <header class="absolute top-0 left-0 w-full flex items-center z-10">
+  <header class="absolute top-0 left-0 w-full flex items-center z-10 transition-colors">
     <div class="container">
       <div class="flex items-center justify-between relative">
         <div class="px-4">
-          <a href="#home" class="font-bold text-3xl block py-6 px-4">
-            byntang<span class="text-blue-950">xyz</span>
+          <a href="#home" class="font-bold text-3xl block py-6 px-4 text-primary dark:text-blue-400">
+            byntangxyz
           </a>
         </div>
 
@@ -61,27 +80,27 @@ onBeforeUnmount(() => {
             ref="navMenu"
             id="nav-menu"
             :class="{ hidden: !isNavVisible }"
-            class="absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
-          >
+            class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:bg-dark dark:shadow-slate-500 lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none lg:dark:bg-transparent text-center"
+           >
             <ul class="block lg:flex">
               <li class="group">
                 <a
                   href="#home"
-                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400"
+                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400 dark:text-white"
                   >Home</a
                 >
               </li>
               <li class="group">
                 <a
                   href="#blog"
-                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400"
+                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400 dark:text-white"
                   >Blog</a
                 >
               </li>
               <li class="group">
                 <a
                   href="#about"
-                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400"
+                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400 dark:text-white"
                   >About</a
                 >
               </li>
@@ -89,9 +108,17 @@ onBeforeUnmount(() => {
                 <a
                   href="https://links.bxfundz.my.id"
                   target="_blank"
-                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400"
+                  class="text-base text-black py-2 mx-8 flex group-hover:text-blue-400 dark:text-white"
                   >Links</a
                 >
+              </li>
+              <li class="group">
+                <button
+                  @click="toggleDarkMode"
+                  class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                >
+                  {{ isDarkMode ? "Light Mode" : "Dark Mode" }}
+                </button>
               </li>
             </ul>
           </nav>

@@ -1,11 +1,18 @@
+<script setup>
+import { ref } from "vue";
+import Certificate from "./certificate.vue";
+
+const showMore = ref(false);
+const showMenu = ref(null);
+</script>
 <template>
-  <section class="pt-36 pb-16 bg-light" id="about">
+  <section class="pt-36 pb-24 bg-light dark:bg-dark transition-colors dark:text-white" id="about">
     <div class="container mx-auto">
       <div class="w-full px-4">
         <div class="max-w-xl mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2">About Me</h4>
+          <h4 class="font-semibold text-lg text-primary mb-2 dark:text-blue-400">About Me</h4>
           <h2
-            class="font-bold text-black text-3xl mb-4 sm:text-4xl lg:text-5xl"
+            class="font-bold text-black text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white"
           >
             Who am I?
           </h2>
@@ -53,7 +60,7 @@
                       Progress to Rp3.000.000,00
                     </span>
                     <span
-                      class="text-xs font-semibold inline-block text-teal-600"
+                      class="text-xs font-semibold inline-block text-teal-600 md:text-xl lg:text-2xl"
                     ></span>
                   </div>
                   <div class="flex h-2 mx-4 mb-8 bg-gray-200 rounded">
@@ -235,6 +242,17 @@
             </div>
           </div>
         </div>
+      </div>
+      <div ref="showMenu" :class="{ hidden: !showMore }">
+        <Certificate />
+      </div>
+      <div class="m-auto content-center text-center pt-16">
+        <button
+          class="px-3 py-2 rounded-lg bg-primary text-white text-[16px] hover:opacity-70 hover:shadow-lg md:text-xl lg:text-2xl"
+          @click="showMore = !showMore"
+        >
+          {{ showMore ? "Show less" : "More about me" }}
+        </button>
       </div>
     </div>
   </section>

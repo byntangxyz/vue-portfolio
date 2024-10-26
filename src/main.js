@@ -39,7 +39,7 @@ function updateProgress(percent) {
   progressText.textContent = percent + "%";
 }
 
-updateProgress(6);
+updateProgress(6.2);
 
 //hover effect
 document.querySelectorAll(".sosmed i").forEach((sosmed) => {

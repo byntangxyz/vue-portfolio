@@ -1,11 +1,11 @@
 <template>
-  <section class="pt-36 pb-42 bg-light" id="blog">
+  <section class="pt-36 pb-42 bg-light dark:bg-dark transition-colors" id="blog">
     <div class="container">
       <div class="w-full px-4">
         <div class="max-w-xl mx-auto text-center mb-16">
-          <h4 class="font-semibold text-lg text-primary mb-2">Blog</h4>
+          <h4 class="font-semibold text-lg text-primary mb-2 dark:text-blue-400">Blog</h4>
           <h2
-            class="font-bold text-black text-3xl mb-4 sm:text-4xl lg:text-5xl"
+            class="font-bold text-black text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white"
           >
             Featured Article
           </h2>
