@@ -10,6 +10,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "swiper": "^11.1.14",
     "typed.js": "^2.1.0",
     "vue": "^3.5.10"
   },

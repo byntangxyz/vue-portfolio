@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import Certificate from "./certificate.vue";
+import menuSelector from "./menuSelector.vue";
 
 const showMore = ref(false);
 const showMenu = ref(null);
@@ -23,8 +23,8 @@ const showMenu = ref(null);
           class="w-full self-center px-6 py-8 lg:w-1/2 bg-primary text-white"
         >
           <p class="text-base font-medium text-slate-300 text-justify mb-6">
-            <span class="text-white text-lg block"
-              >My full name is
+            <span class="text-white text-lg"
+              >Hello I'm 
               <span
                 class="text-white text-lg font-semibold block lg:inline-block"
                 >Bintang Maulana Murtifandy,</span
@@ -38,9 +38,7 @@ const showMenu = ref(null);
               >SMK N2 Depok Sleman</a
             >. I'm interested in programming, focussing on web development.
             Beyond that, I'm also interested in photography and computer
-            networking. Lastly, I am not
-            <i>Born with a silver spoon in my mouth</i> but I will always
-            <i>Go extra miles</i>.
+            networking.
           </p>
           <div class="w-full max-w-md">
             <h2 class="text-lg font-semibold mb-4">Support me to buy Camera</h2>
@@ -83,7 +81,7 @@ const showMenu = ref(null);
         <div class="w-full self-center text-xl px-12 py-8 lg:w-1/2 md:text-2xl">
           <h4 class="font-bold mx-auto my-2">What can i do?</h4>
           <div class="flex mx-auto">
-            <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
+            <div class="grid grid-cols-3 gap-4 md:grid-cols-8 lg:grid-cols-5">
               <a href="https://id.wikipedia.org/wiki/HTML" target="_blank"
                 ><div
                   class="transform transition-transform duration-300 hover:scale-110"
@@ -244,7 +242,7 @@ const showMenu = ref(null);
         </div>
       </div>
       <div ref="showMenu" :class="{ hidden: !showMore }">
-        <Certificate />
+        <menuSelector />
       </div>
       <div class="m-auto content-center text-center pt-16">
         <button
