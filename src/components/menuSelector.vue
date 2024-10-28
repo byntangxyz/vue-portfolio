@@ -24,7 +24,7 @@ import Waifu from "./waifu.vue";
         </div>
       </div>
       <div
-        class="min-h-screen bg-gray-100 p-6 dark:bg-slate-600 dark:bg-opacity-90"
+        class="bg-gray-100 p-6 dark:bg-slate-600 dark:bg-opacity-90"
       >
         <div class="flex space-x-4 mb-4">
           <div class="hidden md:flex space-x-4">
@@ -55,7 +55,7 @@ import Waifu from "./waifu.vue";
           </div>
         </div>
 
-        <div class="bg-white p-6 rounded shadow-md text-black dark:bg-light transition-colors">
+        <div class="bg-white p-6 rounded shadow-md text-black dark:bg-slate-700 dark:text-white transition-colors">
           <div v-if="activeMenu === 'Project'">
             <h2 class="text-lg md:text-xl lg:text-2xl font-semibold">
               Project

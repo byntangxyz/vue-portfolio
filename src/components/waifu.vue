@@ -1,7 +1,6 @@
 <template>
-  <div class="bg-gray-100 p-2">
+  <div class="bg-gray-100 p-2 dark:bg-slate-700 dark:text-white">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <!-- Slider Karakter -->
       <div class="w-full">
         <Swiper
           :slides-per-view="1"
@@ -18,10 +17,9 @@
         </Swiper>
       </div>
 
-      <!-- Deskripsi Karakter -->
       <div class="text-center md:text-left">
         <h2 class="text-2xl font-semibold mb-4">{{ activeWaifu.name }}</h2>
-        <p class="text-gray-700">{{ activeWaifu.description }}</p>
+        <p class="text-gray-700 dark:text-gray-100">{{ activeWaifu.description }}</p>
       </div>
     </div>
   </div>
@@ -46,7 +44,7 @@ export default {
         {
           name: "Ninym Ralei",
           description:
-            "Ninym has loyal personality and cute appearance, I like her because of it",
+            "Ninym has loyal personality and cute appearance, I like her because of it. Also i love white hair!",
 
           image:
             "https://i.pinimg.com/736x/82/ee/91/82ee914276b9037d473cdc1e50ebae09.jpg",
@@ -54,8 +52,16 @@ export default {
         {
           name: "Nao Tomori",
           description:
-            "Mybe just some people know her, but she is special for me",
-          image: "https://i.pinimg.com/originals/d3/7f/5d/d37f5d0b84a168aa9372eb8e2a8ce843.jpg",
+            "Maybe just some people know her, but she is special for me",
+          image:
+            "https://i.pinimg.com/originals/d3/7f/5d/d37f5d0b84a168aa9372eb8e2a8ce843.jpg",
+        },
+        {
+          name: "Hori Kyouko",
+          description:
+            "Gets jealous easily? but she is good girl, funny and smart right? We have same personality",
+          image:
+            "https://i.pinimg.com/736x/09/53/4e/09534ef55cabba049998731cdbfef336.jpg",
         },
       ],
     };
@@ -73,8 +79,7 @@ export default {
 };
 </script>
 
-<style>
-/* Tambahan CSS untuk transisi yang mulus */
+<style scoped>
 circle {
   transition: stroke-dashoffset 0.5s ease;
 }
